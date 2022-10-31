@@ -21,33 +21,35 @@ public class Game {
         board computerBoard = new board();
         printlogo.BSlogo();
 
-
         Input.ScanComputerShips(computerBoard);
         Input.ScanPlayerShips(playerBoard);
-
-        //input.placeComputerShips(computerBoard);
-        //input.placePlayerShips(playerBoard);
 
 
         //Random int (0 or 1) to decide who starts
 
         int randomNum = ThreadLocalRandom.current().nextInt(0, 2);
 
-
-
-
+        computerBoard.printEnemyBoard();
+        playerBoard.printOwnBoard();
         while (!computerBoard.IsGameOver() && !playerBoard.IsGameOver()) {
 
             if (randomNum == 1) {
-                Guess.PlayerGuess(playerBoard);
-                Guess.ComputerGuess(computerBoard);
+                Guess.PlayerGuess(computerBoard);
+                Guess.ComputerGuess(playerBoard);
             }
             if (randomNum == 2) {
-                Guess.ComputerGuess(computerBoard);
-                Guess.PlayerGuess(playerBoard);
+                Guess.ComputerGuess(playerBoard);
+                Guess.PlayerGuess(computerBoard);
             }
+            computerBoard.printEnemyBoard();
+            playerBoard.printOwnBoard();
 
-
+        }
+        if (computerBoard.IsGameOver()) {
+            System.out.println("Player won");
+        }
+        if (playerBoard.IsGameOver()) {
+            System.out.println("Computer won");
         }
     }
 }
