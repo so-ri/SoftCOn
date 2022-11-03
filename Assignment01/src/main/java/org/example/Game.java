@@ -1,12 +1,13 @@
 package org.example;
-import java.util.Random;
+import org.example.Board.board;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
     private static Game uniqueInstance;
 
-    //Random boolean to decide who starts
-    Random rnd = new Random();
-    private final boolean randomBoolean = rnd.nextBoolean();
+    //Random int (0 or 1) to decide who starts
+    private int randomNum = ThreadLocalRandom.current().nextInt(1, 2);
 
     //Singleton implementation of game class
     private Game() {
@@ -20,34 +21,33 @@ public class Game {
         return uniqueInstance;
     }
 
-    public void start() { //starts game
+    public void start() {
 
-        //instantiate two new boards & print greeting message
         board playerBoard = new board();
         board computerBoard = new board();
         printlogo.BSlogo();
 
-        //prints the boards empty for the first time
         computerBoard.printEnemyBoard();
         System.out.println("-----------------------\n");
         playerBoard.printOwnBoard();
 
-        //take input (for ship creation) from computer and from player
         Input.ScanComputerShips(computerBoard);
         Input.ScanPlayerShips(playerBoard);
 
-        //print the "filled" boards for the first time
+        //input.placeComputerShips(computerBoard);
+        //input.placePlayerShips(playerBoard);
+
+
         computerBoard.printOwnBoard();//HERE SHOULD BE PRINT ENEMY BOARD
         playerBoard.printOwnBoard();
 
-        //this while loop controls the game flow and takes the guesses. It ends if either of the boards is > 10.
         while (!computerBoard.IsGameOver() && !playerBoard.IsGameOver()) {
 
-            if (this.randomBoolean) {
+            if (this.randomNum == 1) {
                 Guess.PlayerGuess(computerBoard);
                 Guess.ComputerGuess(playerBoard);
             }
-            else {
+            if (this.randomNum == 2) {
                 Guess.ComputerGuess(playerBoard);
                 Guess.PlayerGuess(computerBoard);
             }

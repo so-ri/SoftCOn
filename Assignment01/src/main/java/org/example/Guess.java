@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.Random;
 import java.util.Scanner;
+import org.example.Board.board;
 import org.example.ships.positionX;
 import org.example.ships.positionY;
 
@@ -47,14 +48,16 @@ public class Guess {
     public static positionX translateX(String min) {
         int C1 = (int) min.charAt(0) - 65;
         positionX[] V1 = positionX.values();
-        return V1[C1];
+        positionX x1 = V1[C1];
+        return x1;
     }
 
     //translates the numeric part of String position to enum
     public static positionY translateY(String min) {
         int C2 = Character.getNumericValue(min.charAt(1));
         positionY[] V2 = positionY.values();
-        return V2[C2];
+        positionY y1 = V2[C2];
+        return y1;
     }
 
     //Validates a given guess
@@ -63,7 +66,9 @@ public class Guess {
         positionY y3 = translateY(pos);
 
         //Checks whether block has already been hit
-        return !shotboard.GotSunk(x3, y3) && !shotboard.GotHit(x3, y3);
+        if (shotboard.GotSunk(x3, y3) || shotboard.GotHit(x3, y3)) {
+            return false;
+        } else return true;
     }
 
 

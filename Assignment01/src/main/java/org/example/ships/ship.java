@@ -1,10 +1,12 @@
 package org.example.ships;
 import java.lang.*;
-import org.example.blockshiptype;
+import org.example.Board.blockshiptype;
 
 public class ship {
 
     private coordinate[] position;
+    private positionX[] X = positionX.values();
+    private positionY[] Y = positionY.values();
     private int len;
 
     public ship(positionX X1, positionY Y1, positionX X2, positionY Y2){
@@ -32,8 +34,7 @@ public class ship {
 
             int positionINDX = 0;
             for(int i = Y1.ordinal(); i<= Y2.ordinal(); i++){
-                positionY[] y = positionY.values();
-                position[positionINDX] = new coordinate(X1, y[i], state.NOTSTRIKED);
+                position[positionINDX] = new coordinate(X1, Y[i], state.NOTSTRIKED);
                 positionINDX += 1;
             }
         }
@@ -45,8 +46,7 @@ public class ship {
             this.position = new coordinate[this.len];
             int positionINDX = 0;
             for(int i = X1.ordinal(); i<= X2.ordinal(); i++){
-                positionX[] x = positionX.values();
-                position[positionINDX] = new coordinate(x[i], Y1, state.NOTSTRIKED);
+                position[positionINDX] = new coordinate(X[i], Y1, state.NOTSTRIKED);
                 positionINDX += 1;
             }
         }
@@ -68,7 +68,10 @@ public class ship {
                 numHits++;
             }
         }
-        return numHits == this.len;
+        if (numHits == this.len){
+            return true;
+        }
+        else{return false;}
     }
 
     public blockshiptype getShipType(){ //

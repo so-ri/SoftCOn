@@ -61,7 +61,13 @@ public class board {
                         case SUNK -> ToBePrinted.append("s|");
                 }
                 else { //else it has not been guessed and can be:
-                    printHelperShiptype(ToBePrinted, currentblock);
+                    switch (currentblock.getShiptype()) {
+                        case EMPTY -> ToBePrinted.append(" |");
+                        case CARRIER -> ToBePrinted.append("C|");
+                        case BATTLESHIP -> ToBePrinted.append("B|");
+                        case PATROL -> ToBePrinted.append("P|");
+                        case SUBMARINE -> ToBePrinted.append("S|");
+                    }
                 }
             }
             ToBePrinted.append(ypos.ordinal()); //adds number of line at the end of the row
@@ -87,12 +93,19 @@ public class board {
             for (positionX xpos: positionXarray) {
                 block currentblock = blockarray[xpos.ordinal()][ypos.ordinal()];
                 if (currentblock.getState() == blockstate.HIT) //if currentblock was hit, it can have the following types that should be shown
-                    printHelperShiptype(ToBePrinted, currentblock);
+                    switch (currentblock.getShiptype()) {
+                        case EMPTY -> ToBePrinted.append(" |");
+                        case CARRIER -> ToBePrinted.append("C|");
+                        case BATTLESHIP -> ToBePrinted.append("B|");
+                        case PATROL -> ToBePrinted.append("P|");
+                        case SUBMARINE -> ToBePrinted.append("S|");
+                    }
                 switch (currentblock.getState()) { //here, we only show these states.
                     case NOGUESS -> ToBePrinted.append(" |");
                     case MISSED -> ToBePrinted.append("o|");
                     case SUNK -> ToBePrinted.append("s|");
                 }
+
             }
             ToBePrinted.append(ypos.ordinal());
             System.out.println(ToBePrinted);
@@ -104,16 +117,6 @@ public class board {
                   A B C D E F G H I J
                 """);
 
-    }
-
-    private void printHelperShiptype(StringBuilder toBePrinted, block currentblock) {
-        switch (currentblock.getShiptype()) {
-            case EMPTY -> toBePrinted.append(" |");
-            case CARRIER -> toBePrinted.append("C|");
-            case BATTLESHIP -> toBePrinted.append("B|");
-            case PATROL -> toBePrinted.append("P|");
-            case SUBMARINE -> toBePrinted.append("S|");
-        }
     }
 
     /*
