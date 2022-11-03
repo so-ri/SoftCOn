@@ -1,4 +1,6 @@
 package org.example;
+import org.example.Board.board;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {

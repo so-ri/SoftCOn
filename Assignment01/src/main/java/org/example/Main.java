@@ -9,4 +9,3 @@ public class Main {
         g1.start();
     }
 }
-

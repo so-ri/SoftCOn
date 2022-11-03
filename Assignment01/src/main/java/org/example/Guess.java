@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Random;
 import java.util.Scanner;
-import org.example.board;
+import org.example.Board.board;
 import org.example.ships.positionX;
 import org.example.ships.positionY;
 

@@ -1,6 +1,8 @@
 package org.example;
 import java.util.Scanner;
 import java.util.Random;
+
+import org.example.Board.board;
 import org.example.ships.*;
 
 

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Board;
 import org.example.ships.ship;
 import org.example.ships.positionX;
 import org.example.ships.positionY;

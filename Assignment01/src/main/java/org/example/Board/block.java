@@ -1,10 +1,10 @@
-package org.example;
+package org.example.Board;
 
 import org.example.ships.positionX;
 import org.example.ships.positionY;
 import org.example.ships.ship;
-import static org.example.blockshiptype.EMPTY;
-import static org.example.blockstate.NOGUESS;
+import static org.example.Board.blockshiptype.EMPTY;
+import static org.example.Board.blockstate.NOGUESS;
 
 /*
 * block classes are being stored in the board class.

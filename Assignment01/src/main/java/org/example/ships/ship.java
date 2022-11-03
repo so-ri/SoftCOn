@@ -1,8 +1,6 @@
 package org.example.ships;
 import java.lang.*;
-import org.example.blockshiptype;
-import javax.swing.text.Position;
-import java.util.Arrays;
+import org.example.Board.blockshiptype;
 
 public class ship {
 

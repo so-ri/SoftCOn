@@ -21,6 +21,5 @@ public class printlogo {
         System.out.println("X X X X       X       X       X       X               X X X X");
 
         System.out.println("_____________________________________________________________");
-
     }
 }
